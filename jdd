@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Совместимость имени Арсений</title>
+    <style>
+        body { font-family: Arial; background: #1a1a2e; color: white; text-align: center; padding: 50px; }
+        input, button { padding: 10px; margin: 10px; font-size: 18px; border-radius: 10px; border: none; }
+        button { background: #e94560; color: white; cursor: pointer; }
+        .result { font-size: 24px; margin-top: 20px; background: #16213e; padding: 20px; border-radius: 20px; }
+    </style>
+</head>
+<body>
+    <h1>🔮 Совместимость имени Арсений</h1>
+    <p>Введи второе имя — узнай шанс 🔥</p>
+    <input type="text" id="name2" placeholder="Например: Анна">
+    <button onclick="checkCompatibility()">Узнать</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        const namesDB = {
+            "анна": 92, "мария": 78, "артцр": 100, "софия": 88,
+            "алексей": 70, "дмитрий": 55, "иван": 60, "михаил": 82,
+            "артем": 74, "никита": 68, "екатерина": 85, "виктория": 80,
+            "александра": 77, "олег": 45, "владимир": 50, "павел": 72,
+            "валентина": 91, "алиса": 96, "варвара": 84, "давид": 1
+        };
+
+        function checkCompatibility() {
+            let name2 = document.getElementById("name2").value.trim().toLowerCase();
+            if (!name2) {
+                document.getElementById("result").innerHTML = "❌ Введи имя, епта!";
+                return;
+            }
+            let score = namesDB[name2] || Math.floor(Math.random() * 50) + 30;
+            let status = score >= 80 ? "💖 Идеально! Женись сразу." :
+                         score >= 60 ? "👍 Неплохо, можно пробовать." :
+                         score >= 40 ? "🤔 Так себе, но есть шанс." :
+                         "💀 не даст.";
+            document.getElementById("result").innerHTML = `
+                📊 Совместимость Арсений + ${name2.toUpperCase()}: ${score}%<br>
+                🧠 Вердикт: ${status}
+            `;
+        }
+    </script>
+</body>
+</html>
